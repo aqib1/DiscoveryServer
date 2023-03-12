@@ -2,6 +2,7 @@ package com.discoveryserver.io.server;
 
 import com.discoveryserver.io.cache.MetadataCache;
 import com.discoveryserver.io.domain.ServiceMetadata;
+import com.discoveryserver.io.exceptions.ClusterNotFoundException;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public non-sealed class DefaultDiscoverServer implements DiscoveryServer {
 
     @Override
     public List<ServiceMetadata> fetchRegistry(String clusterId) {
+        if(this.metadataCache.contains(clusterId))
+            throw new ClusterNotFoundException(String.format("clusterId %s not exists.", clusterId));
         return this.metadataCache.getByCluster(clusterId);
     }
 

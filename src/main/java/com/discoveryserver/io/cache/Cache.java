@@ -39,4 +39,11 @@ public sealed interface Cache<K, V> permits MetadataCache {
      */
     void clear();
 
+    /**
+     * This method will check if key exists in cache
+     *
+     * @param key key of cache
+     */
+    boolean contains(K key);
+
 }

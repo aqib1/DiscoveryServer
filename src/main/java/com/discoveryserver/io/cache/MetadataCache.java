@@ -52,4 +52,9 @@ public non-sealed class MetadataCache implements Cache<String, ServiceMetadata> 
     public void clear() {
         this.cache.clear();
     }
+
+    @Override
+    public boolean contains(String key) {
+        return this.cache.containsKey(key);
+    }
 }
